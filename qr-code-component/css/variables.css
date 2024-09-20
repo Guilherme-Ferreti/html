@@ -1,0 +1,8 @@
+:root {
+    --rt-font--primary: 'Outfit', sans-serif;
+
+    --rt-color-white: hsl(0, 0%, 100%);
+    --rt-color-slate-300: hsl(212, 45%, 89%);
+    --rt-color-slate-500: hsl(216, 15%, 48%);
+    --rt-color-slate-900: hsl(218, 44%, 22%);
+}

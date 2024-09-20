@@ -1,0 +1,42 @@
+@import url(./variables.css);
+@import url(./reset.css);
+
+body {
+    height: 100vh;
+    background-color: var(--rt-color-slate-300);
+    color: var(--rt-color-slate-500);
+}
+
+.container {
+    display: flex;
+    height: 100%;
+    width: 85%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.qr-code-card {
+    max-width: 375px;
+    margin: auto;
+    padding: 1rem;
+    background-color: var(--rt-color-white);
+    border-radius: 1rem;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.qr-code-card__image {
+    border-radius: 1rem;
+}
+
+.qr-code-card__content {
+    text-align: center;
+    padding: 0 1.5rem;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+}
+
+.qr-code-card__title {
+    font-size: 1.5rem;
+    color: var(--rt-color-slate-900);
+    margin-bottom: 1rem;
+}
