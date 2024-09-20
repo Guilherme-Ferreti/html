@@ -1,22 +1,5 @@
-@import url(./variables.css);
-@import url(./reset.css);
-
-body {
-    height: 100vh;
-    background-color: var(--rt-color-slate-300);
-    color: var(--rt-color-slate-500);
-}
-
-.container {
-    display: flex;
-    height: 100%;
-    width: 85%;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
 .qr-code-card {
-    max-width: 375px;
+    max-width: 23.4375rem;
     margin: auto;
     padding: 1rem;
     background-color: var(--rt-color-white);
