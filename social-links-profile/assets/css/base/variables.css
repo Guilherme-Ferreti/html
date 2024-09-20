@@ -1,0 +1,9 @@
+:root {
+    --rt-font--primary: 'Inter', sans-serif;
+
+    --rt-color-white: hsl(0, 0%, 100%);
+    --rt-color-green: hsl(75, 94%, 57%);
+    --rt-color-grey-700: hsl(0, 0%, 20%);
+    --rt-color-grey-800: hsl(0, 0%, 12%);
+    --rt-color-grey-900: hsl(0, 0%, 8%);
+}
