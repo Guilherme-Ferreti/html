@@ -32,3 +32,13 @@ a {
 img {
     max-width: 100%;
 }
+
+body {
+    width: 100%;
+    min-height: 100vh;
+    font-family: var(--rt-font--primary);
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--rt-color-white);
+    background-color: var(--rt-color-grey-900);
+}
