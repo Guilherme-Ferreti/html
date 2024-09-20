@@ -1,0 +1,46 @@
+.hero {
+    background-color: var(--rt-color-secondary-700);
+}
+
+.hero__title {
+    font-size: 3rem;
+}
+
+.hero__text {
+    font-family: var(--rt-font--primary);
+    font-size: 1.3rem;
+    color: var(--rt-color-secondary-100);
+    margin: 2rem 0;
+}
+
+.hero__button {
+    margin: 0 auto;
+}
+
+@media (min-width: 1000px) {
+    .hero {
+        padding: 6rem 0;
+    }
+
+    .hero__wrapper {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .hero__title {
+        font-size: 5rem;
+        line-height: 1.1;
+        max-width: 40%;
+        margin-bottom: 0;
+    }
+
+    .hero__text-wrapper {
+        max-width: 50%;
+        align-self: flex-end;
+    }
+
+    .hero__button {
+        font-size: 1.5rem;
+    }
+}

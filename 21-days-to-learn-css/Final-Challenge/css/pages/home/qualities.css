@@ -1,0 +1,24 @@
+.qualities {
+    background-color: var(--rt-color-secondary-100);
+}
+
+.qualities__item-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    justify-content: space-between;
+}
+
+.qualities__item-title {
+    text-align: center;
+}
+
+.qualities__item-text {
+    margin: 0 auto;
+}
+
+@media (min-width: 700px) {
+    .qualities__item-wrapper {
+        flex-direction: row;
+    }
+}

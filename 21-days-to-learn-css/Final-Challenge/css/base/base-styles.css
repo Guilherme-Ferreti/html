@@ -1,0 +1,41 @@
+section, footer {
+    padding: 4rem 0;
+}
+
+.container {
+    width: 85%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.button {
+    display: inline-block;
+    font-family: var(--rt-font--secondary);
+    font-weight: bold;
+    text-transform: uppercase;
+    color: var(--rt-color-secondary-100);
+    background-color: var(--rt-color-primary);
+    padding: 0.5em 1em;
+    border-radius: 100px;
+}
+
+.title {
+    font-family: var(--rt-font--secondary);
+    font-weight: bold;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: var(--rt-color-primary);
+}
+
+.title--white {
+    color: var(--rt-color-white);
+}
+
+.title--small {
+    font-size: 1.3125rem;
+}
+
+.button:hover {
+    color: var(--rt-color-white) !important;
+    background-color: var(--rt-color-secondary-500) !important;
+}

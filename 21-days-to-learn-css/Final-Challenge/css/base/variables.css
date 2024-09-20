@@ -1,0 +1,15 @@
+:root {
+    --rt-color-primary: #A59678;
+    --rt-color-secondary-100: #F1F1F1;
+    --rt-color-secondary-500: #6F737F;
+    --rt-color-secondary-700: #3B4050;
+    --rt-color-secondary-800: #2E323F;
+    --rt-color-white: #FFF;
+    --rt-color-black: #072A2D;
+
+    --rt-font--primary: 'Montserrat', sans-serif;
+    --rt-font--secondary: 'Oswald', sans-serif;
+
+    --rt-breakpoint--tablet-portrait-up: 700px;
+    --rt-breakpoint--desktop-up: 100px;
+}

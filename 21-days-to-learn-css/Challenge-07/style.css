@@ -1,0 +1,117 @@
+:root {
+    --rt-font--primary: "Roboto", sans-serif;
+    --rt-font--secondary: "Playfair Display", serif;
+
+    --rt-color-primary: #824936;
+    --rt-color-gray-1: #F3EED9;
+    --rt-color-black-1: #222C2A;
+    --rt-color-white-1: #FFFFFF;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+body {
+    font-size: 1.3rem;
+    font-family: var(--rt-font--primary);
+    font-weight: 400;
+}
+
+body, p, h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+}
+
+p {
+    line-height: 1.5;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+.container {
+    width: 80%;
+    max-width: 1110px;
+    margin: 0 auto;
+}
+
+.h2 {
+    font-family: var(--rt-font--secondary);
+    font-size: 2.25rem;
+    margin-bottom: 2rem;
+}
+
+.hero {
+    min-height: 660px;
+    background-color: var(--rt-color-gray-1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero__subtitle {
+    font-weight: 300;
+    font-size: 1.125rem;
+    text-transform: uppercase;
+    letter-spacing: 8px;
+}
+
+.hero__title {
+    font-family: var(--rt-font--secondary);
+    font-size: 60px;
+    color: var(--rt-color-primary);
+    width: 50%;
+    text-align: center;
+}
+
+.primary-content {
+    padding: 80px 0;
+}
+
+.primary-content__title {
+    color: var(--rt-color-primary);
+    text-align: center;
+}
+
+.primary-content__content {
+    display: flex;
+    justify-content: space-between;
+}
+
+.primary-content__content p {
+    width: 48%;
+}
+
+.text-and-image {
+    padding: 80px 0;
+    color: var(--rt-color-white-1);
+}
+
+.text-and-image .container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.text-and-image__content, .text-and-image__image {
+    width: 48%;
+}
+
+.text-and-image__image {
+    align-self: flex-start;
+}
+
+.text-and-image--bg-black {
+    background-color: var(--rt-color-black-1);
+}
+
+.text-and-image--bg-brown {
+    background-color: var(--rt-color-primary);
+}
+
+.text-and-image--img-left .container {
+    flex-direction: row-reverse;
+}
