@@ -1,0 +1,13 @@
+:root {
+    --rt-font--primary: 'Outfit', sans-serif;
+    --rt-font-secondary: 'YoungSerif', sans-serif;
+
+    --rt-color-white: hsl(0, 0%, 100%);
+    --rt-color-stone-100: hsl(30, 54%, 90%);
+    --rt-color-stone-150: hsl(30, 18%, 87%);
+    --rt-color-stone-600: hsl(30, 10%, 34%);
+    --rt-color-stone-900: hsl(24, 5%, 18%);
+    --rt-color-brown-800: hsl(14, 45%, 36%);
+    --rt-color-rose-800: hsl(332, 51%, 32%);
+    --rt-color-rose-50: hsl(330, 100%, 98%);
+}
