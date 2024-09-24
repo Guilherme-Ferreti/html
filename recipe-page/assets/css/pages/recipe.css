@@ -1,5 +1,6 @@
 .recipe {
     background-color: var(--rt-color-white);
+    max-width: 37.5rem;
 }
 
 .recipe__content {
@@ -40,7 +41,7 @@
 .recipe__callout {
     padding: 1.5rem;
     background-color: var(--rt-color-rose-50);
-    border-radius: 10px;
+    border-radius: 15px;
 }
 
 .recipe__callout-title {
@@ -93,4 +94,19 @@ ul.recipe__list .recipe__list-item::marker {
 
 .recipe__table b {
     color: var(--rt-color-brown-800);
+}
+
+@media (min-width: 600px) {
+    .recipe {
+        border-radius: 15px;
+        box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    }
+
+    .recipe__image-wrapper {
+        padding: 2rem;
+    }
+
+    .recipe__image {
+        border-radius: 15px;
+    }
 }
