@@ -1,6 +1,6 @@
 :root {
     --rt-font--primary: 'Outfit', sans-serif;
-    --rt-font-secondary: 'YoungSerif', sans-serif;
+    --rt-font--secondary: 'YoungSerif', sans-serif;
 
     --rt-color-white: hsl(0, 0%, 100%);
     --rt-color-stone-100: hsl(30, 54%, 90%);
