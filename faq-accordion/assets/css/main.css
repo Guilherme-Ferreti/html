@@ -1,2 +1,6 @@
 @import url('./base/fonts.css');
 @import url('./base/variables.css');
+@import url('./base/reset.css');
+@import url('./base/utils.css');
+
+@import url('./pages/faq.css');
