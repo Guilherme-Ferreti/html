@@ -1,0 +1,13 @@
+:root {
+    --rt-font--primary: 'Red Hat Text', sans-serif;
+
+    --rt-color-red: hsl(14, 86%, 42%);
+    --rt-color-red-dark: hsl(14, 86%, 32%);
+    --rt-color-green: hsl(159, 69%, 38%);
+    --rt-color-rose-50: hsl(20, 50%, 98%);
+    --rt-color-rose-100: hsl(13, 31%, 94%);
+    --rt-color-rose-300: hsl(14, 25%, 72%);
+    --rt-color-rose-400: hsl(7, 20%, 60%);
+    --rt-color-rose-500: hsl(12, 20%, 44%);
+    --rt-color-rose-900: hsl(14, 65%, 9%);
+}
