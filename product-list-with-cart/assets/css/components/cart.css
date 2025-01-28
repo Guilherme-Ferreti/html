@@ -9,6 +9,13 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
+@media (min-width: 992px) {
+    .cart {
+        position: sticky;
+        top: 2rem;
+    }
+}
+
 .cart__title {
     font-size: 1.5rem;
     color: var(--rt-color-red);
@@ -41,7 +48,7 @@
 .cart__item-price-wrapper {
     display: flex;
     flex-direction: row;
-    gap: .5rem;
+    gap: .75rem;
 }
 
 .cart__item-quantity {
