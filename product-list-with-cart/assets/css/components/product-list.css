@@ -16,7 +16,7 @@
     border-radius: 10px;
 }
 
-.product-list__item-button {
+.product-list__item-add-to-cart-btn {
     transform: translateY(-50%);
     margin: 0 auto;
 }

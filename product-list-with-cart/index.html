@@ -21,25 +21,11 @@
         <div class="cart">
             <h2 class="cart__title">Your Cart (<span class="cart__items-count">0</span>)</h2>
 
-            <div class="cart__items">
-                <div class="cart__item">
-                    <div class="cart__item-details">
-                        <p class="cart__item-name">Waffle with Berries</p>
-                        <div class="cart__item-price-wrapper">
-                            <p class="cart__item-quantity">1x</p>
-                            <p class="cart__item-price">@ <span>$8.99</span></p>
-                            <p class="cart__item-total">$8.99</p>
-                        </div>
-                    </div>
-                    <button class="cart__item-remove-btn" title="Remove item from cart">
-                        <img src="./assets/images/icon-remove-item.svg" alt="Remove item">
-                    </button>
-                </div>
-            </div>
+            <div class="cart__items"></div>
 
             <div class="cart__total-wrapper">
                 <p class="cart__total-label">Order Total</p>
-                <p class="cart__total-price">$46.50</p>
+                <p class="cart__total-price">$0</p>
             </div>
 
             <button class="cart__confirm-order-btn | btn" data-color="red">
@@ -49,15 +35,21 @@
     </div>
 
     <script>
-        async function fetchProducts() {
+        const cart = {
+            products: [],
+            getProduct: (productId) => cart.products.find(cartProduct => cartProduct.id == productId),
+            hasProduct: (productId) => cart.products.some(cartProduct => cartProduct.id == productId),
+            getTotalPrice: () => cart.products.reduce((acc, product) => acc + product.price * product.quantity, 0),
+        };
+
+        const fetchProducts = async () => {
             const response = await fetch('./data.json');
 
             return await response.json();
         }
 
-        async function renderProductList() {
-            const productList = document.querySelector('.product-list__items-wrapper');
-
+        const renderProductList = async () => {
+            const productListEl = document.querySelector('.product-list__items-wrapper');
             const products = await fetchProducts();
 
             products.forEach(product => {
@@ -65,13 +57,15 @@
 
                 productItem.classList.add('product-list__item');
 
+                productItem.dataset.productInfo = JSON.stringify(product);
+
                 productItem.innerHTML = `
                     <picture>
                         <source media="(min-width:1200px)" srcset="${product.image.desktop}">
                         <source media="(min-width:600px)" srcset="${product.image.tablet}">
                         <img class="product-list__item-image" src="${product.image.mobile}" alt="${product.name}" />
                     </picture>
-                    <button class="product-list__item-button | btn" data-color="white">
+                    <button class="product-list__item-add-to-cart-btn | btn" data-color="white">
                         <img src="./assets/images/icon-add-to-cart.svg" alt="A cart icon" />
                         <span>Add to Cart</span>
                     </button>
@@ -80,62 +74,116 @@
                     <p class="product-list__item-price">$${product.price.toFixed(2)}</p>
                 `;
 
-                productList.appendChild(productItem);
+                productListEl.appendChild(productItem);
             });
         }
 
-        renderProductList();
+        const addProductToCart = (product) => {
+            if (cart.hasProduct(product.id)) {
+                cart.getProduct(product.id).quantity += 1;
+            } else {
+                cart.products.push({
+                    ...product,
+                    quantity: 1,
+                });
+            }
+
+            renderCart();
+        }
+
+        const removeProductFromCart = (productId) => {
+            cart.products = cart.products.filter(product => product.id !== productId);
+
+            renderCart();
+        }
+
+        const renderCart = () => {
+            const cartEl = document.querySelector('.cart');
+            const cartItemsEl = cartEl.querySelector('.cart__items');
+
+            const updateCartTotal = () => {
+                const itemsCountEl = cartEl.querySelector('.cart__items-count');
+                const totalPriceEl = cartEl.querySelector('.cart__total-price');
+
+                itemsCountEl.textContent = cart.products.length;
+                totalPriceEl.textContent = `$${cart.getTotalPrice().toFixed(2)}`;
+            }
+
+            const addNewProducts = () => {
+                const newProducts = cart.products.filter(product => !cartItemsEl.querySelector(`[data-product-id="${product.id}"]`));
+
+                newProducts.forEach(product => {
+                    const cartItem = document.createElement('div');
+
+                    cartItem.classList.add('cart__item');
+                    cartItem.dataset.productInfo = JSON.stringify(product);
+                    cartItem.dataset.productId = product.id;
+
+                    cartItem.innerHTML = `
+                        <div class="cart__item-details">
+                            <p class="cart__item-name">${product.name}</p>
+                            <div class="cart__item-price-wrapper">
+                                <p class="cart__item-quantity">${product.quantity}x</p>
+                                <p class="cart__item-price">@ <span>$${product.price.toFixed(2)}</span></p>
+                                <p class="cart__item-total">$${product.price.toFixed(2)}</p>
+                            </div>
+                        </div>
+                        <button class="cart__item-remove-btn" data-color="red">
+                            <img src="./assets/images/icon-remove-item.svg" alt="A cross icon" />
+                        </button>
+                    `;
+
+                    cartItemsEl.appendChild(cartItem);
+
+                    cartItem.querySelector('.cart__item-remove-btn').addEventListener('click', () => removeProductFromCart(product.id));
+                });
+            }
+
+            const updateExistingProducts = (productId) => {
+                cart.products.forEach(product => {
+                    const cartItem = cartItemsEl.querySelector(`[data-product-id="${product.id}"]`);
+
+                    if (!cartItem) {
+                        return;
+                    }
+
+                    cartItem.querySelector('.cart__item-quantity').textContent = `${product.quantity}x`;
+                    cartItem.querySelector('.cart__item-total').textContent = `$${(product.price * product.quantity).toFixed(2)}`;
+                });
+            }
+
+            const removeUnexistingProducts = () => {
+                cartItemsEl.querySelectorAll('.cart__item').forEach(cartItemEl => {
+                    const productId = cartItemEl.dataset.productId;
+
+                    if (!cart.hasProduct(productId)) {
+                        console.log(cartItemEl);
+
+                        cartItemEl.remove();
+                    }
+                });
+            }
+
+            updateCartTotal();
+            updateExistingProducts();
+            addNewProducts();
+            removeUnexistingProducts();
+        }
+
+        const renderPage = async () => {
+            await renderProductList();
+
+            document.querySelectorAll('.product-list__item-add-to-cart-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const productInfo = JSON.parse(btn.closest('.product-list__item').dataset.productInfo);
+
+                    addProductToCart(productInfo);
+                });
+            });
+        }
+
+        renderPage();
     </script>
-
-    <!-- Desserts
-
-    Waffle with Berries
-    Waffle
-    6.50
-    Add to Cart
-
-    Vanilla Bean Crème Brûlée
-    Crème Brûlée
-    7.00
-    Add to Cart
-
-    Macaron Mix of Five
-    Macaron
-    8.00
-    Add to Cart
-
-    Classic Tiramisu
-    Tiramisu
-    5.50
-    Add to Cart
-
-    Pistachio Baklava
-    Baklava
-    4.00
-    Add to Cart
-
-    Lemon Meringue Pie
-    Pie
-    5.00
-    Add to Cart
-
-    Red Velvet Cake
-    Cake
-    4.50
-    Add to Cart
-
-    Salted Caramel Brownie
-    Brownie
-    4.50
-    Add to Cart
-
-    Vanilla Panna Cotta
-    Panna Cotta
-    6.50
-    Add to Cart
-
-    Your Cart (Quantity)
-    Your added items will appear here -->
 </body>
 
 </html>
