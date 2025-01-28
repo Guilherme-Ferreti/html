@@ -1,0 +1,14 @@
+.shopping-page {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    gap: 2rem;
+}
+
+@media (min-width: 992px) {
+    .shopping-page {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+    }
+}

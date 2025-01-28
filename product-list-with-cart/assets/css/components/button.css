@@ -1,0 +1,40 @@
+.btn[data-color='red'] {
+    --text-color: #fff;
+    --text-color-hover: #fff;
+    --bg-color: var(--rt-color-red);
+    --bg-color-hover: var(--rt-color-red-dark);
+    --border-color: var(--rt-color-red);
+    --border-color-hover: var(--rt-color-red-dark);
+}
+
+.btn[data-color='white'] {
+    --text-color: var(--rt-color-rose-900);
+    --text-color-hover: var(--rt-color-red);
+    --bg-color: #fff;
+    --bg-color-hover: #fff;
+    --border-color: var(--rt-color-rose-300);
+    --border-color-hover: var(--rt-color-red);
+}
+
+.btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    text-align: center;
+    font-weight: bold;
+    cursor: pointer;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    border: 1px solid var(--border-color);
+    border-radius: 25px;
+}
+
+.btn:hover,
+.btn:focus {
+    color: var(--text-color-hover);
+    background-color: var(--bg-color-hover);
+    border-color: var(--border-color-hover);
+}

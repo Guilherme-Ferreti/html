@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+    <link rel="stylesheet" href="./assets/css/main.css">
+
+    <title>Product list with cart</title>
+</head>
+
+<body>
+    <div class="shopping-page | container">
+        <div class="product-list">
+            <h1 class="product-list__title">Desserts</h1>
+
+            <div class="product-list__items-wrapper"></div>
+        </div>
+        <div class="cart">
+            <h2 class="cart__title">Your Cart (<span class="cart__items-count">0</span>)</h2>
+
+            <div class="cart__items">
+                <div class="cart__item">
+                    <div class="cart__item-details">
+                        <p class="cart__item-name">Waffle with Berries</p>
+                        <div class="cart__item-price-wrapper">
+                            <p class="cart__item-quantity">1x</p>
+                            <p class="cart__item-price">@ <span>$8.99</span></p>
+                            <p class="cart__item-total">$8.99</p>
+                        </div>
+                    </div>
+                    <button>Remove</button>
+                </div>
+                <div class="cart__item">
+                    <div class="cart__item-details">
+                        <p class="cart__item-name">Waffle with Berries</p>
+                        <div class="cart__item-price-wrapper">
+                            <p class="cart__item-quantity">1x</p>
+                            <p class="cart__item-price">@ <span>$8.99</span></p>
+                            <p class="cart__item-total">$8.99</p>
+                        </div>
+                    </div>
+                    <button>Remove</button>
+                </div>
+            </div>
+
+            <div class="cart__total">
+                <p class="cart__total-label">Order Total</p>
+                <p class="cart__total-price">$46.50</p>
+            </div>
+
+            <button class="cart__confirm-order-btn | btn" data-color="red">
+                Confirm Order
+            </button>
+        </div>
+    </div>
+
+    <script>
+        async function fetchProducts() {
+            const response = await fetch('./data.json');
+
+            return await response.json();
+        }
+
+        async function renderProductList() {
+            const productList = document.querySelector('.product-list__items-wrapper');
+
+            const products = await fetchProducts();
+
+            products.forEach(product => {
+                const productItem = document.createElement('div');
+
+                productItem.classList.add('product-list__item');
+
+                productItem.innerHTML = `
+                    <img class="product-list__item-image" src="${product.image.mobile}" alt="${product.name}" />
+                    <button class="product-list__item-button | btn" data-color="white">
+                        <img src="./assets/images/icon-add-to-cart.svg" alt="A cart icon" />
+                        <span>Add to Cart</span>
+                    </button>
+                    <p class="product-list__item-category">${product.category}</p>
+                    <p class="product-list__item-name">${product.name}</p>
+                    <p class="product-list__item-price">$${product.price.toFixed(2)}</p>
+                `;
+
+                productList.appendChild(productItem);
+            });
+        }
+
+        renderProductList();
+    </script>
+
+    <!-- Desserts
+
+    Waffle with Berries
+    Waffle
+    6.50
+    Add to Cart
+
+    Vanilla Bean Crème Brûlée
+    Crème Brûlée
+    7.00
+    Add to Cart
+
+    Macaron Mix of Five
+    Macaron
+    8.00
+    Add to Cart
+
+    Classic Tiramisu
+    Tiramisu
+    5.50
+    Add to Cart
+
+    Pistachio Baklava
+    Baklava
+    4.00
+    Add to Cart
+
+    Lemon Meringue Pie
+    Pie
+    5.00
+    Add to Cart
+
+    Red Velvet Cake
+    Cake
+    4.50
+    Add to Cart
+
+    Salted Caramel Brownie
+    Brownie
+    4.50
+    Add to Cart
+
+    Vanilla Panna Cotta
+    Panna Cotta
+    6.50
+    Add to Cart
+
+    Your Cart (Quantity)
+    Your added items will appear here -->
+</body>
+
+</html>

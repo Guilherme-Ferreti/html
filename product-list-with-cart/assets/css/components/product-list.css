@@ -1,0 +1,36 @@
+.product-list__title {
+    color: var(--rt-color-rose-900);
+    margin-bottom: 2rem;
+}
+
+.product-list__items-wrapper {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1.5rem;
+}
+
+.product-list__item-image {
+    border-radius: 10px;
+}
+
+.product-list__item-button {
+    transform: translateY(-50%);
+    margin: 0 auto;
+}
+
+.product-list__item-category {
+    color: var(--rt-color-rose-300);
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-top: -.7rem;
+}
+
+.product-list__item-name {
+    color: var(--rt-color-rose-900);
+    font-weight: bold;
+}
+
+.product-list__item-price {
+    color: var(--rt-color-red);
+    font-weight: bold;
+}
