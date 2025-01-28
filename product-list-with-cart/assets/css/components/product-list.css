@@ -1,3 +1,6 @@
+.product-list {
+    width: 100%;
+}
 .product-list__title {
     color: var(--rt-color-rose-900);
     margin-bottom: 2rem;
@@ -5,7 +8,7 @@
 
 .product-list__items-wrapper {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
     gap: 1.5rem;
 }
 

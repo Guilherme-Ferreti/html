@@ -66,7 +66,11 @@
                 productItem.classList.add('product-list__item');
 
                 productItem.innerHTML = `
-                    <img class="product-list__item-image" src="${product.image.mobile}" alt="${product.name}" />
+                    <picture>
+                        <source media="(min-width:1200px)" srcset="${product.image.desktop}">
+                        <source media="(min-width:600px)" srcset="${product.image.tablet}">
+                        <img class="product-list__item-image" src="${product.image.mobile}" alt="${product.name}" />
+                    </picture>
                     <button class="product-list__item-button | btn" data-color="white">
                         <img src="./assets/images/icon-add-to-cart.svg" alt="A cart icon" />
                         <span>Add to Cart</span>
