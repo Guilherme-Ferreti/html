@@ -18,19 +18,26 @@
 
             <div class="product-list__items-wrapper"></div>
         </div>
-        <div class="cart">
+        <div class="cart" data-empty="true">
             <h2 class="cart__title">Your Cart (<span class="cart__items-count">0</span>)</h2>
 
-            <div class="cart__items"></div>
-
-            <div class="cart__total-wrapper">
-                <p class="cart__total-label">Order Total</p>
-                <p class="cart__total-price">$0</p>
+            <div class="cart__empty-state">
+                <img src="./assets/images/illustration-empty-cart.svg" alt="An empty cart illustration" />
+                <p class="cart__empty-state-title">Your added items will appear here</p>
             </div>
 
-            <button class="cart__confirm-order-btn | btn" data-color="red">
-                Confirm Order
-            </button>
+            <div class="cart__body">
+                <div class="cart__items"></div>
+
+                <div class="cart__total-wrapper">
+                    <p class="cart__total-label">Order Total</p>
+                    <p class="cart__total-price">$0</p>
+                </div>
+    
+                <button class="cart__confirm-order-btn | btn" data-color="red">
+                    Confirm Order
+                </button>
+            </div>
         </div>
     </div>
 
@@ -100,6 +107,8 @@
         const renderCart = () => {
             const cartEl = document.querySelector('.cart');
             const cartItemsEl = cartEl.querySelector('.cart__items');
+
+            cartEl.dataset.empty = cart.products.length < 1;
 
             const updateCartTotal = () => {
                 const itemsCountEl = cartEl.querySelector('.cart__items-count');
