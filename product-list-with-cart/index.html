@@ -46,6 +46,22 @@
         </div>
     </div>
 
+    <div class="order-confirmed-modal">
+        <div class="order-confirmed-modal__content">
+            <img class="order-confirmed-modal__icon" src="./assets/images/icon-order-confirmed.svg" alt="A green checkmark icon">
+            <h2 class="order-confirmed-modal__title">Order Confirmed</h2>
+            <p class="order-confirmed-modal__message">We hope you enjoy your food!</p>
+            <div class="order-confirmed-modal__details">
+                <div class="order-confirmed-modal__items"></div>
+                <div class="order-confirmed-modal__total-wrapper">
+                    <p class="order-confirmed-modal__total-label">Order Total</p>
+                    <p class="order-confirmed-modal__total-price">$0</p>
+                </div>
+            </div>
+            <button class="order-confirmed-modal__btn | btn" data-color="red">Start New Order</button>
+        </div>
+    </div>
+
     <script>
         const cart = {
             products: [],
@@ -221,6 +237,49 @@
             removeUnexistingProducts();
         }
 
+        const emptyCart = () => {
+            cart.products = [];
+
+            updateProductListDOM();
+            updateCartDOM();
+        }
+
+        const showOrderConfirmedModal = () => {
+            const modalEl = document.querySelector('.order-confirmed-modal');
+            const orderConfirmedModalItemsEl = document.querySelector('.order-confirmed-modal__items');
+            const orderConfirmedModalTotalPriceEl = document.querySelector('.order-confirmed-modal__total-price');
+
+            cart.products.forEach(product => {
+                const orderConfirmedModalItem = document.createElement('div');
+
+                orderConfirmedModalItem.classList.add('order-confirmed-modal__item');
+                orderConfirmedModalItem.innerHTML = `
+                    <img class="order-confirmed-modal__item-image" src="${product.image.thumbnail}" alt="${product.name}" />
+                    <div class="order-confirmed-modal__item-details">
+                        <p class="order-confirmed-modal__item-name">${product.name}</p>
+                        <div class="order-confirmed-modal__item-quantity-wrapper">
+                            <p class="order-confirmed-modal__item-quantity">${product.quantity}x</p>
+                            <p class="order-confirmed-modal__item-unity-price">@ $${product.price.toFixed(2)}</p>
+                        </div>
+                    </div>
+                    <p class="order-confirmed-modal__item-price">$${product.price.toFixed(2)}</p>
+                `;
+
+                orderConfirmedModalItemsEl.appendChild(orderConfirmedModalItem);
+            });
+
+            orderConfirmedModalTotalPriceEl.textContent = `$${cart.getTotalPrice().toFixed(2)}`;
+
+            modalEl.dataset.open = true;
+        }
+
+        const hideOrderConfirmedModal = () => {
+            const modalEl = document.querySelector('.order-confirmed-modal');
+            modalEl.dataset.open = false;
+
+            document.querySelector('.order-confirmed-modal__items').innerHTML = '';
+        }
+    
         const renderPage = async () => {
             await renderProductList();
 
@@ -240,6 +299,20 @@
                     subtractProductFromCart(item.dataset.productId);
                     updateProductListDOM();
                 });
+            });
+        
+            document.querySelector('.cart__confirm-order-btn').addEventListener('click', () => {
+                if (cart.products.length < 1) {
+                    return;
+                }
+
+                showOrderConfirmedModal();
+
+                emptyCart();
+            });
+
+            document.querySelector('.order-confirmed-modal__btn').addEventListener('click', () => {
+                hideOrderConfirmedModal();
             });
         }
 

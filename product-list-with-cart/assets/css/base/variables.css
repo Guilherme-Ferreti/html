@@ -10,4 +10,6 @@
     --rt-color-rose-400: hsl(7, 20%, 60%);
     --rt-color-rose-500: hsl(12, 20%, 44%);
     --rt-color-rose-900: hsl(14, 65%, 9%);
+
+    --rt-border-radius: 12px;
 }

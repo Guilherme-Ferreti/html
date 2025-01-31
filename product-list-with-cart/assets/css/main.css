@@ -7,4 +7,5 @@
 
 @import url('./components/button.css');
 @import url('./components/cart.css');
+@import url('./components/order-confirmed-modal.css');
 @import url('./components/product-list.css');

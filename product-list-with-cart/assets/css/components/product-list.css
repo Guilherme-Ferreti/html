@@ -14,7 +14,7 @@
 }
 
 .product-list__item-image {
-    border-radius: 10px;
+    border-radius: var(--rt-border-radius);
 }
 
 .product-list__item[data-in-cart="false"] .product-list__item-modify-quantity {
